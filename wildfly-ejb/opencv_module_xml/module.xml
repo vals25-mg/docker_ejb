@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="urn:jboss:module:1.9" name="com.opencsv">
+    <resources>
+        <resource-root path="opencsv-5.7.1.jar"/>
+    </resources>
+    <dependencies>
+        <module name="javax.api"/>
+        <module name="org.apache.commons.lang3"/>
+    </dependencies>
+</module>
