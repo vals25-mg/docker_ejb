@@ -5,6 +5,7 @@
 	<projects>
 		<project>EjbDockerEleveMajorClient</project>
 		<project>web_central_new</project>
+		<project>ejb_module1</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

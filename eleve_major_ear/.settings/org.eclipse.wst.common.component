@@ -7,5 +7,8 @@
         <dependent-module archiveName="web_central_new.war" deploy-path="/" handle="module:/resource/web_central_new/web_central_new">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="ejb_module1.jar" deploy-path="/" handle="module:/resource/ejb_module1/ejb_module1">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>

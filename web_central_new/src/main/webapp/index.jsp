@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="java.util.List" %>
-<%@ page import="eleve.major.ejb.module2.models.AnneeScolaire" %>
+    <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,29 +70,53 @@
 </head>
 <body>
 <h1>📊 CLASSEMENT ÉLÈVES</h1>
-<br>
-<div class="select-container">
-    <form>
-        <label for="annee">Choisissez une année scolaire :</label>
-        <select id="annee" name="annee">
-            <%
-                List<AnneeScolaire> annees = (List<AnneeScolaire>) request.getAttribute("annees");
-                if (annees != null) {
-                    for (AnneeScolaire a : annees) {
-            %>
-                        <option value="<%= a.getId() %>">
-                            <%= a.getAnneeDebut() %> - <%= a.getAnneeFin() %>
-                        </option>
-            <%
-                    }
-                } else {
-            %>
-                <option>Aucune année scolaire trouvée</option>
-            <%
-                }
-            %>
-        </select>
-    </form>
-</div>
+
+<c:if test="${not empty anneesScolaires}">
+        <div class="select-container">
+        <form method="get" action="index">
+            <label for="anneeScolaire">Choisir une année scolaire : </label>
+            <select id="anneeScolaire" name="anneeScolaire" onchange="this.form.submit()">
+                <c:forEach var="annee" items="${anneesScolaires}">
+                    <option value="${annee.getAnneeDebut()}" <c:if test="${param.anneeScolaire == annee.getAnneeDebut()}">selected</c:if>
+                    >${annee.getAnneeDebut()}-${annee.getAnneeFin()}</option>
+                </c:forEach>
+            </select>
+         </form>   
+        </div>
+    </c:if>
+<!-- MAJORS SECTION -->
+    <c:if test="${not empty majors}">
+        <div class="majors-container">
+            <c:forEach var="major" items="${majors}">
+                <div class="major-card">
+                    <h2>🥇 MAJOR ABSOLU !</h2>
+                    <p><strong>${major.nom}</strong> - <strong>${major.moyenne}/20</strong></p>
+                    <p><small>Filière: ${major.filiereNom} | ${major.anneeDebut}-${major.anneeFin}</small></p>
+                </div>
+            </c:forEach>
+        </div>
+    </c:if>
+    
+    <!-- RANKING TABLE -->
+    <table>
+        <tr>
+            <th>Nom</th>
+            <th>Filière</th>
+            <th>Année</th>
+            <th>Moyenne</th>
+            <th>Redoublement</th>
+        </tr>
+        <c:forEach var="item" items="${resultats}" varStatus="status">
+            <tr <c:if test="${majors.stream().anyMatch(m -> m.id == item.id)}">class="major"</c:if>>
+                <td>${item.nom}</td>
+                <td>${item.filiereNom}</td>
+                <td>${item.anneeDebut}-${item.anneeFin}</td>
+                <td>${item.moyenne}</td>
+                <td>${item.redoublement}</td>
+            </tr>
+        </c:forEach>
+    </table>
+
+
 </body>
 </html>

@@ -15,5 +15,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="/Users/valisoa/Documents/wildfly-27.0.0.Final/bin/client/jboss-client.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/EjbDockerEleveMajorClient"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ejb_module1"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
