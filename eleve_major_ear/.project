@@ -3,8 +3,8 @@
 	<name>eleve_major_ear</name>
 	<comment></comment>
 	<projects>
-		<project>EjbDockerEleveMajor</project>
 		<project>EjbDockerEleveMajorClient</project>
+		<project>web_central_new</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

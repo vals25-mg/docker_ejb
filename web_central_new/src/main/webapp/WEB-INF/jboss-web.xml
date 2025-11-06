@@ -1,0 +1,3 @@
+<jboss-web>
+    <context-root>/web_central_new</context-root>
+</jboss-web>
